@@ -116,6 +116,7 @@ PreparedStatement st;
       PreparedStatement ps;
       ResultSet      rs;
       String SelectQuery="SELECT * FROM `reservations`";
+      
                     try {
                         ps=myconnection.CreateConnection().prepareStatement(SelectQuery);
                         rs=ps.executeQuery();
@@ -175,8 +176,11 @@ PreparedStatement st;
      public void fillReservationInformationJTABLE(JTable table)
     {
       PreparedStatement ps;
-      ResultSet      rs;
-      String SelectQuery="SELECT * FROM clients,reservations WHERE clients.id=reservations.client_id";
+      ResultSet  rs,rs2;
+      String SelectQuery= "SELECT  clients.id,first_name, last_name ,email ,room_number,date_in,date_out,RepID,reservations.id FROM clients  inner join reservations  on clients.id=reservations.client_id";
+       String SelectQuery2="SELECT * FROM `phone` WHERE `Client ID`=?";       
+
+ 
                     try {
                         ps=myconnection.CreateConnection().prepareStatement(SelectQuery);
                         rs=ps.executeQuery();
@@ -185,19 +189,28 @@ PreparedStatement st;
                         Object [] row;
                         while(rs.next())
                         {
-
+                     ps=myconnection.CreateConnection().prepareStatement(SelectQuery2);
+                        ps.setInt(1, rs.getInt("id"));
+                        rs2 =ps.executeQuery();
                          row=new Object[11];
                          row[0]=rs.getInt(1);
                          row[1]=rs.getString(2);
+                         
                          row[2]=rs.getString(3);
                          row[3]=rs.getString(4);
-                         row[4]=rs.getString(5);
-                         row[5]=rs.getInt(6);
-                         row[6]=rs.getInt(7);
-                         row[7]=rs.getInt(8);
-                         row[8]=rs.getString(9);
-                         row[9]=rs.getString(10);
-                         row[10]=rs.getInt(11);
+                         
+                        rs2.next();
+                        row[4]= rs2.getString(1);
+                        rs2.next();
+                        row[5]=rs2.getString(1);
+                         row[6]=rs.getString(6);
+                         
+                         row[7]=rs.getString(7);
+                         row[8]=rs.getString(8);
+                         row[9]=rs.getString(5);
+                         row[10]=rs.getInt(9);
+                                 
+                         
 
                                  
                          tableModel.addRow(row);

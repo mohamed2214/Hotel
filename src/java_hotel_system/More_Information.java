@@ -69,11 +69,11 @@ public class More_Information extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Client_ID", "First_Name", "Last_Name", "Phone", "Email", "Reservation_ID", "Client_ID", "Room_Number", "Date_In", "Date_Out", "Receptionist_ID"
+                "Client_id", "first_name", "last_name", "Email", "phone 1", "phone 2", "date in", "date out", "receptionist_id", "room_num", "reservation id"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -111,6 +111,7 @@ public class More_Information extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     /**
      * @param args the command line arguments
      */
