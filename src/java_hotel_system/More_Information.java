@@ -69,17 +69,18 @@ public class More_Information extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Client_id", "first_name", "last_name", "Email", "phone 1", "phone 2", "date in", "date out", "receptionist_id", "room_num", "reservation id"
+                "Client_id", "first_name", "last_name", "Email", "phone 1", "phone 2", "reservation id", "room_num", "date in", "date out", "receptionist_id"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, true, true, true, true
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

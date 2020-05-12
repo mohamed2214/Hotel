@@ -203,12 +203,12 @@ PreparedStatement st;
                         row[4]= rs2.getString(1);
                         rs2.next();
                         row[5]=rs2.getString(1);
-                         row[6]=rs.getString(6);
+                         row[6]=rs.getString(9);
                          
-                         row[7]=rs.getString(7);
-                         row[8]=rs.getString(8);
-                         row[9]=rs.getString(5);
-                         row[10]=rs.getInt(9);
+                         row[7]=rs.getString(5);
+                         row[8]=rs.getString(6);
+                         row[9]=rs.getString(7);
+                         row[10]=rs.getInt(8);
                                  
                          
 
