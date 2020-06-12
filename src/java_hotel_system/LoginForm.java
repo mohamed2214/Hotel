@@ -18,7 +18,7 @@ import javax.swing.JFrame;
  * @author Falcao
  */
 public class LoginForm extends javax.swing.JFrame {
-
+    static public int k;
     /**
      * Creates new form LoginForm
      */
@@ -27,7 +27,7 @@ public class LoginForm extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Receptionist Login");
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,7 +153,6 @@ public class LoginForm extends javax.swing.JFrame {
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
 
         PreparedStatement ps;
-         ResultSet rs; 
         String username=jTextFieldUsername.getText();
         String password=String.valueOf(jPasswordField1.getPassword());
         if(username.trim().equals(""))
@@ -167,9 +166,9 @@ public class LoginForm extends javax.swing.JFrame {
         else
         {
             Reception rec=new Reception ();
-           int k= rec.RecptionEnter(username, password);
+            k= rec.RecptionEnter(username, password);
             if(k>0)
-            {JOptionPane.showMessageDialog(rootPane, "Your ID Is----->"+k, "Receptioist Login", JOptionPane.INFORMATION_MESSAGE);
+            {
 
                 MainForm mainform=new MainForm();
                 mainform.setVisible(true);
