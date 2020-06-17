@@ -14,10 +14,18 @@ public class Reception {
 
 
         PreparedStatement ps;
-         ResultSet rs; 
+         ResultSet rs;   
+         
+         
                     public int RecptionEnter (String username,String password)
                     {
-                    
+                      
+                              if(username.trim().equals("") ||  password.trim().equals("") )
+                            {
+                                 return 0;
+
+                           }
+                              else{
                     try {
                 CONNECTION myconnection=new CONNECTION();
                 String selectQuery="SELECT * FROM `users` WHERE `username`=? AND `password`=?";
@@ -42,7 +50,7 @@ public class Reception {
                     return 0;
                     
                     }
-       
+                    }
                     
     
 }

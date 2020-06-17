@@ -148,7 +148,7 @@ public class ManagerRoomsForm extends javax.swing.JFrame {
 
         jButtonADDRoom.setBackground(new java.awt.Color(255, 255, 0));
         jButtonADDRoom.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jButtonADDRoom.setText("Add New Rooms");
+        jButtonADDRoom.setText("Add New Room");
         jButtonADDRoom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButtonADDRoom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonADDRoom.addActionListener(new java.awt.event.ActionListener() {

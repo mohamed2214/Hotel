@@ -20,9 +20,7 @@ public class RESERVATION {
                     ROOMS room=new ROOMS ();
  public boolean addReservation(int client_id,int room_type,String dateIn,String dateOut,int Recp)
     {
-  
         PreparedStatement st;
-        ResultSet rs; 
         String addQuery="INSERT INTO `reservations`(`client_id`, `room_number`, `date_in`, `date_out`, `RepID`) VALUES (?,?,?,?,?)";
         try {
             st=myconnection.CreateConnection().prepareStatement(addQuery);
@@ -43,16 +41,11 @@ public class RESERVATION {
             {
                     return false;
                     }
-            
             }else{
             
-                      JOptionPane.showMessageDialog(null, " This Room Is Already Reserved", "Room Reservation", JOptionPane.WARNING_MESSAGE);
-
             return false; 
             
             }
-            
-            
       
         } catch (SQLException ex) {
             Logger.getLogger(Clients.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,7 +79,6 @@ public class RESERVATION {
      public boolean removeReservation(int reservation_id)
 {
 PreparedStatement st;
-        ResultSet rs; 
         String deleteQuery="DELETE FROM `reservations` WHERE `id`=?";
         try {
             st=myconnection.CreateConnection().prepareStatement(deleteQuery);
@@ -107,7 +99,6 @@ PreparedStatement st;
         }
  
               return false; 
-
 
 }
      
@@ -179,13 +170,10 @@ PreparedStatement st;
       ResultSet  rs,rs2;
       String SelectQuery= "SELECT  clients.id,first_name, last_name ,email ,room_number,date_in,date_out,RepID,reservations.id FROM clients  inner join reservations  on clients.id=reservations.client_id";
        String SelectQuery2="SELECT * FROM `phone` WHERE `Client ID`=?";       
-
- 
                     try {
                         ps=myconnection.CreateConnection().prepareStatement(SelectQuery);
                         rs=ps.executeQuery();
                         DefaultTableModel tableModel =(DefaultTableModel)table.getModel();
-                        
                         Object [] row;
                         while(rs.next())
                         {
@@ -204,35 +192,25 @@ PreparedStatement st;
                         rs2.next();
                         row[5]=rs2.getString(1);
                          row[6]=rs.getString(9);
-                         
+            
                          row[7]=rs.getString(5);
                          row[8]=rs.getString(6);
                          row[9]=rs.getString(7);
                          row[10]=rs.getInt(8);
-                                 
-                         
-
-                                 
                          tableModel.addRow(row);
                         }
-                        
-                        
-                        
                     } catch (SQLException ex) {
                         Logger.getLogger(Clients.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    }}
      
      
-}
+
          public void fillReservationstaticsJTABLE(JTable table)
     {
       PreparedStatement ps;
       ResultSet  rs;
       String SelectQuery= "select (select count(*) from reservations) , (select count(*) from clients) , (select count(*) from rooms WHERE rooms.reserved=\"No\") ,(select count(*) from rooms WHERE rooms.reserved=\"Yes\")";
-           
-
-
- 
+       
                     try {
                         ps=myconnection.CreateConnection().prepareStatement(SelectQuery);
                         rs=ps.executeQuery();

@@ -152,7 +152,6 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
 
-        PreparedStatement ps;
         String username=jTextFieldUsername.getText();
         String password=String.valueOf(jPasswordField1.getPassword());
         if(username.trim().equals(""))
@@ -169,7 +168,6 @@ public class LoginForm extends javax.swing.JFrame {
             k= rec.RecptionEnter(username, password);
             if(k>0)
             {
-
                 MainForm mainform=new MainForm();
                 mainform.setVisible(true);
                 mainform.pack();

@@ -67,13 +67,17 @@ public class ROOMS {
                         Logger.getLogger(Clients.class.getName()).log(Level.SEVERE, null, ex);
                     }
       
-      
     }
     public boolean addRooms(int Number,int Type,String phone)
     {
   
         PreparedStatement st;
         ResultSet rs; 
+            if(phone.trim().equals("")   )
+    {
+     return false;
+
+    } else{
         String addQuery="INSERT INTO `rooms`(`r_number`, `type`, `phone`, `reserved`) VALUES (?,?,?,?)";
         try {
             st=myconnection.CreateConnection().prepareStatement(addQuery);
@@ -97,11 +101,18 @@ public class ROOMS {
  
               return false; 
     }
-    
+    }
      public boolean editRoom(int Number,int Type,String phone,String isReserved)
     {
       PreparedStatement st;
-        ResultSet rs; 
+      
+            if(phone.trim().equals("")   )
+    {
+     return false;
+
+    } else{
+      
+      
         String editQuery="UPDATE `rooms` SET`type`=?,`phone`=?,`reserved`=? WHERE `r_number`=?";
         try {
             st=myconnection.CreateConnection().prepareStatement(editQuery);
@@ -116,12 +127,11 @@ public class ROOMS {
         }
  
               return false; 
-    }
+    }}
      
      public boolean removeRoom(int RoomNumber)
 {
 PreparedStatement st;
-        ResultSet rs; 
         String deleteQuery="DELETE FROM `rooms` WHERE `r_number`=?";
         try {
             st=myconnection.CreateConnection().prepareStatement(deleteQuery);

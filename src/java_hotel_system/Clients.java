@@ -15,7 +15,12 @@ public class Clients {
 
     public boolean addClients(String Fname,String lname,String phone1,String phone2,String email)
     {
-  
+        if(Fname.trim().equals("")|| lname.trim().equals("") || phone1.trim().equals("") || email.trim().equals(""))
+    {
+    return false;
+
+    }
+        else{
         PreparedStatement st;
         ResultSet rs; 
         String addQuery="INSERT INTO `clients`(`first_name`, `last_name`, `email`) VALUES (?,?,?)";
@@ -40,7 +45,7 @@ public class Clients {
                 else return false;
             }
             else
-            
+        
               return false; 
             
         } 
@@ -51,7 +56,7 @@ public class Clients {
               return false; 
 
     }
-    
+    }
     public void fillClientsJTABLE(JTable table)
     {
       PreparedStatement ps;
@@ -71,7 +76,6 @@ public class Clients {
                          ps=myconnection.CreateConnection().prepareStatement(SelectQuery2);
                          ps.setInt(1, rs.getInt("id"));
                          rs2=ps.executeQuery();
-                         
                          row=new Object[6];
                          row[0]=rs.getInt(1);
                          row[1]=rs.getString(2);
@@ -84,17 +88,24 @@ public class Clients {
                          tableModel.addRow(row);
                         }
                         
-                        
-                        
                     } catch (SQLException ex) {
                         Logger.getLogger(Clients.class.getName()).log(Level.SEVERE, null, ex);
                     }
-      
       
     }
          public boolean editCilent(int id,String Fname,String lname,String phone1,String phone2,String email)
          {PreparedStatement st;
         ResultSet rs;
+        
+            if(Fname.trim().equals("")|| lname.trim().equals("") || phone1.trim().equals("") || email.trim().equals(""))
+    {
+    return false;
+
+    }
+        else{
+        
+        
+        
         String editQuery="UPDATE `clients` SET `first_name`=?,`last_name`=?,`email`=? WHERE `id`=?";
         String editQuery2="UPDATE `phone` SET `phone number`=? WHERE `phone number`=? AND `Client ID`=?";
         try { st=myconnection.CreateConnection().prepareStatement(editQuery);
@@ -112,6 +123,9 @@ public class Clients {
                  st.setString(2,rs.getString("phone number"));
                   st.setInt(3, id);
                   if(st.executeUpdate()>0)
+                      if(phone2.trim().equals(""))
+                      { return true;    }
+                      else{
                   {rs.next();
                   st=myconnection.CreateConnection().prepareStatement(editQuery2);
                   st.setString(1, phone2);
@@ -120,12 +134,13 @@ public class Clients {
                    return st.executeUpdate()>0;
               }
             }
+              }
             else return false;
             } catch (SQLException ex) {
             Logger.getLogger(Clients.class.getName()).log(Level.SEVERE, null, ex);  }
              return false; 
           }
-
+         }
         public boolean removeClient(int id)
         {PreparedStatement st;
         ResultSet rs; 

@@ -322,16 +322,16 @@ public class ManageClientsForm extends javax.swing.JFrame {
     if(fname.trim().equals("")|| lname.trim().equals("") || phone1.trim().equals("") || email.trim().equals(""))
     {
     
-           JOptionPane.showMessageDialog(rootPane, "Requried Enter Full Fields", "Empty Fields", JOptionPane.WARNING_MESSAGE);
+       JOptionPane.showMessageDialog(rootPane, "Requried Enter Full Fields", "Empty Fields", JOptionPane.WARNING_MESSAGE);
 
     }
     else{
        if(    clients.addClients(fname, lname, phone1, phone2, email))
     {
-       JOptionPane.showMessageDialog(rootPane, "New Client Added Successfully", "Add Client", JOptionPane.INFORMATION_MESSAGE);
+     JOptionPane.showMessageDialog(rootPane, "New Client Added Successfully", "Add Client", JOptionPane.INFORMATION_MESSAGE);
     }
     else {
-             JOptionPane.showMessageDialog(rootPane, " Client Not Added ", "Add Client", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(rootPane, " Client Not Added ", "Add Client", JOptionPane.ERROR_MESSAGE);
 
     
     }
@@ -384,10 +384,7 @@ public class ManageClientsForm extends javax.swing.JFrame {
         {
        JOptionPane.showMessageDialog(rootPane, ex.getMessage()+"Enter the Cilent ID", "Client ID Error", JOptionPane.ERROR_MESSAGE);
         }
-//        catch(SQLException e){
-//            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Client ID Error", JOptionPane.ERROR_MESSAGE);
-//        }
-//    
+
     
     
     } 
