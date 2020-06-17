@@ -16,9 +16,9 @@ import org.junit.Test;
  *
  * @author Falcao
  */
-public class ReceptionIT {
+public class ReceptionistTest {
     
-    public ReceptionIT() {
+    public ReceptionistTest() {
     }
     
     @BeforeClass
